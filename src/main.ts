@@ -12,11 +12,12 @@ async function bootstrap() {
   const config = app.get<ConfigService>(ConfigService);
   const port = config.get<number>('APP_PORT') || PORT_DEFAULT;
   const domain = config.get<number>('API_DOMAIN') || DOMAIN_DEFAULT;
-  const logger = new Logger('Main')
+  const logger = new Logger('Main');
 
   await app.listen(port, () => {
     const msg = `Server is running at ${domain}:${port}`;
     logger.log(msg);
   });
 }
+
 bootstrap();
