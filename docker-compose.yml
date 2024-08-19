@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  api:
+    depends_on:
+      - db-pg
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: url-shortener-api
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    networks:
+      - url-shortener
+    env_file:
+      - ./.env
+    command: >
+      sh -c "
+        npm run migration:run &&
+        npm run start:dev
+      "
+
+  db-pg:
+    image: postgres:latest
+    container_name: url-shortener-db-pg
+    environment:
+      POSTGRES_HOST: ${DATABASE_HOST}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    networks:
+      - url-shortener
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+networks:
+  url-shortener:
+
+volumes:
+  db-data:
