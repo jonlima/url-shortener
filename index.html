@@ -145,6 +145,76 @@ DATABASE_SCHEMA=public</code></pre></div><blockquote>
 <td><code>POST</code></td>
 <td><code>{ &quot;originalUrl&quot;: &quot;string&quot; }</code></td>
 <td><code>{ &quot;id&quot;: &quot;number&quot;, &quot;shortUrl&quot;: &quot;string&quot; }</code></td>
+<td><code>Authorization: Bearer &lt;token&gt; (optional)</code></td>
+</tr>
+<tr>
+<td><code>/:hash</code></td>
+<td><code>GET</code></td>
+<td>None</td>
+<td>Redirect to original URL</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>/url/user/:id</code></td>
+<td><code>GET</code></td>
+<td>None</td>
+<td><code>[{&quot;id&quot;, &quot;hash&quot;, &quot;originalUrl&quot;,&quot;clickCount&quot;, &quot;updatedAt&quot;, &quot;url&quot; }]</code></td>
+<td><code>Authorization: Bearer &lt;token&gt;</code></td>
+</tr>
+<tr>
+<td><code>/url/:id</code></td>
+<td><code>DELETE</code></td>
+<td>None</td>
+<td>None</td>
+<td><code>Authorization: Bearer &lt;token&gt;</code></td>
+</tr>
+<tr>
+<td><code>/:hash</code></td>
+<td><code>PUT</code></td>
+<td><code>{&quot;originalUrl&quot;: &quot;string&quot;}</code></td>
+<td><code>{&quot;id&quot;, &quot;hash&quot;, &quot;originalUrl&quot;,&quot;clickCount&quot;, &quot;updatedAt&quot;, &quot;url&quot; }</code></td>
+<td><code>Authorization: Bearer &lt;token&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h5><strong>Auth Module</strong></h5>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th><strong>Route</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Request Body</strong></th>
+<th><strong>Response Body</strong></th>
+<th><strong>Headers</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/login</code></td>
+<td><code>POST</code></td>
+<td><code>{ &quot;email&quot;: &quot;string&quot;, &quot;password&quot;: &quot;string&quot; }</code></td>
+<td><code>{ &quot;access_token&quot;: &quot;string&quot; }</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h5><strong>Users Module</strong></h5>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th><strong>Route</strong></th>
+<th><strong>Method</strong></th>
+<th><strong>Request Body</strong></th>
+<th><strong>Response Body</strong></th>
+<th><strong>Headers</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td><code>POST</code></td>
+<td><code>{ &quot;originalUrl&quot;: &quot;string&quot; }</code></td>
+<td><code>{ &quot;id&quot;: &quot;number&quot;, &quot;shortUrl&quot;: &quot;string&quot; }</code></td>
 <td>None</td>
 </tr>
 <tr>
@@ -174,6 +244,19 @@ DATABASE_SCHEMA=public</code></pre></div><blockquote>
 <h3>Future Scope</h3>
 <img src="./artifacts/Scope.png" />
 
+<h3>Improvements</h3>
+<ul>
+<li>Break into services</li>
+<li>Add cache</li>
+<li>Deploy on a cloud</li>
+<li>Logging and Monitoring</li>
+<li>Add resources: Plan, URL Metadata, Click Tracking</li>
+<li>Add circuit breake</li>
+<li>Add pagination</li>
+<li>Customizable URL</li>
+<li>Experiment with URLs</li>
+<li>Add load balancer</li>
+</ul>
 <h3>Autor</h3>
 <p><a href="https://www.linkedin.com/in/jonathalima/"><img src="https://img.shields.io/badge/-JonathaLima-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/jonathalima/" alt="Linkedin Badge" class="img-responsive"></a></p>
 
