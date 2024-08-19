@@ -1,8 +1,17 @@
-import { Controller, Get, Post, Body, Param, Logger } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Logger,
+  Res,
+} from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBody, ApiResponse } from '@nestjs/swagger';
 import { UrlsService } from './urls.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { URLNotFoundException } from 'src/common/errors/custom-errors';
+import { Response } from 'express';
 
 @ApiTags('URLs')
 @Controller('')
@@ -30,9 +39,10 @@ export class UrlsController {
   @ApiResponse({ status: 200, description: 'Redirect to the original URL.' })
   @ApiResponse({ status: 404, description: 'URL not found.' })
   @Get(':hash')
-  async redirect(@Param('hash') hash: string) {
+  async redirect(@Param('hash') hash: string, @Res() res: Response) {
     try {
-      return await this.urlsService.getOriginalUrlByHash(hash);
+      const result = await this.urlsService.getOriginalUrlByHash(hash);
+      return res.redirect(result.url);
     } catch (error) {
       this.logger.error(error);
 

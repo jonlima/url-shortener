@@ -54,7 +54,7 @@ URL Shortener is a backend application that provides a URL shortening service.
 | **Route**           | **Method** | **Request Body**                                                     | **Response Body**                             | **Headers**                                  |
 |---------------------|------------|----------------------------------------------------------------------|-----------------------------------------------|----------------------------------------------|
 | `/`                 | `POST`     | `{ "originalUrl": "string" }`                                        | `{ "id": "number", "shortUrl": "string" }`    | None                                         |
-| `/:hash`            | `GET`      | None                                                                 | `{ "url": "string" }`                         | None                                         |
+| `/:hash`            | `GET`      | None                                                                 | Redirect to original URL                      | None                                         |
 
 
 
