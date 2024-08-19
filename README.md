@@ -77,7 +77,7 @@ DATABASE_SCHEMA=public
 How to access and generate project documentation (Swagger and Compodoc).
 
 - Access the API documentation (Swagger) at: `/doc` or `/doc/json`
-- Online access [here](https://jonlima.github.io/url-shortene)
+- Online access [(https://jonlima.github.io/url-shortene)](https://jonlima.github.io/url-shortener/)
 
 **Compodoc**:
 
