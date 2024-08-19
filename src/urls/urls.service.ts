@@ -1,14 +1,17 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { CreateUrlDto } from './dto/create-url.dto';
 import {
   BASE62_CHARACTERS,
   URLS_REPOSITORY,
 } from '../common/constants/constants';
-import { Repository, IsNull } from 'typeorm';
+import { Repository, IsNull, EntityNotFoundError } from 'typeorm';
 import { Url } from './entities/url.entity';
+import { URLNotFoundException } from 'src/common/errors/custom-errors';
 
 @Injectable()
 export class UrlsService {
+  private logger = new Logger('UrlsService');
+
   constructor(
     @Inject(URLS_REPOSITORY)
     private readonly _urlRepository: Repository<Url>,
@@ -68,7 +71,11 @@ export class UrlsService {
 
       return { url: url.originalUrl };
     } catch (error) {
-      throw new NotFoundException(`URL not found.`);
+      if (error instanceof EntityNotFoundError) {
+        throw new URLNotFoundException();
+      }
+
+      throw error;
     }
   }
 
@@ -78,12 +85,16 @@ export class UrlsService {
    * @param {number} urlId - The ID of the URL to be incremented.
    */
   async increaseClickCount(urlId: number): Promise<void> {
-    const url = await this._urlRepository.findOneOrFail({
-      where: { id: urlId },
-    });
+    try {
+      const url = await this._urlRepository.findOneOrFail({
+        where: { id: urlId },
+      });
 
-    url.clickCount += 1;
-    await this._urlRepository.save(url);
+      url.clickCount += 1;
+      await this._urlRepository.save(url);
+    } catch (error) {
+      this.logger.error(error);
+    }
   }
 
   /**

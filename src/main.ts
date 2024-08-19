@@ -4,6 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
 const PORT_DEFAULT = 8000;
 const DOMAIN_DEFAULT = 'http://localhost';
@@ -30,6 +31,8 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
+
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   SwaggerModule.setup('doc', app, swaggerDocument, {
     jsonDocumentUrl: 'doc/json',

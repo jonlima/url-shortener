@@ -1,19 +1,14 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Logger } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBody, ApiResponse } from '@nestjs/swagger';
 import { UrlsService } from './urls.service';
 import { CreateUrlDto } from './dto/create-url.dto';
+import { URLNotFoundException } from 'src/common/errors/custom-errors';
 
 @ApiTags('URLs')
 @Controller('')
 export class UrlsController {
+  private logger = new Logger(UrlsController.name);
+
   constructor(private readonly urlsService: UrlsService) {}
 
   @Post()
@@ -36,6 +31,16 @@ export class UrlsController {
   @ApiResponse({ status: 404, description: 'URL not found.' })
   @Get(':hash')
   async redirect(@Param('hash') hash: string) {
-    return await this.urlsService.getOriginalUrlByHash(hash);
+    try {
+      return await this.urlsService.getOriginalUrlByHash(hash);
+    } catch (error) {
+      this.logger.error(error);
+
+      if (error instanceof URLNotFoundException) {
+        throw new URLNotFoundException();
+      }
+
+      throw error;
+    }
   }
 }
