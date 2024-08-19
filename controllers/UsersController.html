@@ -79,23 +79,16 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
-
-
-
-
-
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >URLNotFoundException</li>
+  <li class="breadcrumb-item">Controllers</li>
+  <li class="breadcrumb-item" >UsersController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -119,68 +112,171 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/errors/custom-errors.ts</code>
+            <code>src/users/users.controller.ts</code>
         </p>
 
-
-
             <p class="comment">
-                <h3>Extends</h3>
+                <h3>Prefix</h3>
             </p>
             <p class="comment">
-                        <code>NotFoundException</code>
+                <code>users</code>
             </p>
 
 
 
 
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+                        <h6><b>Methods</b></h6>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/common/errors/custom-errors.ts:4</a></div>
-                            </td>
-                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#create" >create</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
-            </tbody>
-        </table>
+
+
+
+
+        </tbody>
+    </table>
 </section>
 
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(createUserDto: <a href="../classes/CreateUserDto.html" target="_self">CreateUserDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post()<br />@ApiOperation({summary: &#x27;Register a user&#x27;})<br />@ApiBody({type: CreateUserDto})<br />@ApiResponse({status: 201})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/users/users.controller.ts:17</a></div>
+                        </td>
+                    </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>createUserDto</td>
+                                            <td>
+                                                            <code><a href="../classes/CreateUserDto.html" target="_self" >CreateUserDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
 
 
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-
-
-    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import { ERROR_MESSAGES } from &#x27;./error-messages&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Post, Body, Logger } from &#x27;@nestjs/common&#x27;;
+import { ApiTags, ApiOperation, ApiBody, ApiResponse } from &#x27;@nestjs/swagger&#x27;;
+import { UsersService } from &#x27;./users.service&#x27;;
+import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;
 
-export class URLNotFoundException extends NotFoundException {
-  constructor() {
-    super(ERROR_MESSAGES.URL_NOT_FOUND);
-  }
-}
+@ApiTags(&#x27;Users&#x27;)
+@Controller(&#x27;users&#x27;)
+export class UsersController {
+  private logger &#x3D; new Logger(UsersController.name);
 
-export class EmailIsRegisteredException extends ConflictException {
-  constructor() {
-    super(ERROR_MESSAGES.EMAIL_IS_REGISTERED);
+  constructor(private readonly usersService: UsersService) {}
+
+  @Post()
+  @ApiOperation({ summary: &#x27;Register a user&#x27; })
+  @ApiBody({ type: CreateUserDto })
+  @ApiResponse({ status: 201 })
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.usersService.create(createUserDto);
   }
 }
 </code></pre>
     </div>
 </div>
+
+
+
+
+
+
+
 
 
 
@@ -215,8 +311,8 @@ export class EmailIsRegisteredException extends ConflictException {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'URLNotFoundException.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'UsersController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

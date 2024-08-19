@@ -155,6 +155,14 @@
                                 <a href="#create" >create</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createByUser" >createByUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findByUserId" >findByUserId</a>
+                            </li>
+                            <li>
                                 <a href="#generateHash" >generateHash</a>
                             </li>
                             <li>
@@ -172,6 +180,14 @@
                             <li>
                                     <span class="modifier">Async</span>
                                 <a href="#increaseClickCount" >increaseClickCount</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeByUserId" >removeByUserId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateByUserId" >updateByUserId</a>
                             </li>
                         </ul>
                     </td>
@@ -196,7 +212,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/urls/urls.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/urls/urls.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -261,8 +277,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/urls/urls.service.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/urls/urls.service.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -317,6 +333,181 @@ it returns the existing shortened version.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="createByUser"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createByUser</b></span>
+                        <a href="#createByUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createByUser(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, undefined: <a href="../classes/CreateUrlDto.html" target="_self">CreateUrlDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="185"
+                                    class="link-to-prism">src/urls/urls.service.ts:185</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new URL for a user. If the URL already exists, it returns the existing one.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The user&#39;s identifier.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                            <code><a href="../classes/CreateUrlDto.html" target="_self" >CreateUrlDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>The new URL&#39;s ID and short URL.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findByUserId"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findByUserId</b></span>
+                        <a href="#findByUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findByUserId(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="162"
+                                    class="link-to-prism">src/urls/urls.service.ts:162</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves all URLs associated with a specific user that haven&#39;t been deleted.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The user&#39;s identifier.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Url.html" target="_self" >Promise&lt;Url[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>A list of URLs with detailed information including ID, hash, original URL, click count, and update timestamp.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="generateHash"></a>
                     <span class="name">
                         <span ><b>generateHash</b></span>
@@ -333,8 +524,8 @@ it returns the existing shortened version.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="126"
-                                    class="link-to-prism">src/urls/urls.service.ts:126</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="128"
+                                    class="link-to-prism">src/urls/urls.service.ts:128</a></div>
                         </td>
                     </tr>
 
@@ -418,8 +609,8 @@ it returns the existing shortened version.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/urls/urls.service.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/urls/urls.service.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -499,8 +690,8 @@ it returns the existing shortened version.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="105"
-                                    class="link-to-prism">src/urls/urls.service.ts:105</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/urls/urls.service.ts:107</a></div>
                         </td>
                     </tr>
 
@@ -546,8 +737,8 @@ it returns the existing shortened version.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="145"
-                                    class="link-to-prism">src/urls/urls.service.ts:145</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/urls/urls.service.ts:147</a></div>
                         </td>
                     </tr>
 
@@ -627,8 +818,8 @@ it returns the existing shortened version.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/urls/urls.service.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/urls/urls.service.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -683,6 +874,219 @@ it returns the existing shortened version.</p>
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeByUserId"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>removeByUserId</b></span>
+                        <a href="#removeByUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeByUserId(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="223"
+                                    class="link-to-prism">src/urls/urls.service.ts:223</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Marks a URL as deleted for a specific user.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The user&#39;s identifier.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The URL&#39;s identifier to be removed.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateByUserId"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateByUserId</b></span>
+                        <a href="#updateByUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateByUserId(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateUrlDto: <a href="../classes/UpdateUrlDto.html" target="_self">UpdateUrlDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="239"
+                                    class="link-to-prism">src/urls/urls.service.ts:239</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates a URL for a specific user.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The user&#39;s identifier.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The URL&#39;s identifier to be updated.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>updateUrlDto</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateUrlDto.html" target="_self" >UpdateUrlDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Data Transfer Object containing the updated URL data.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/Url.html" target="_self" >Promise&lt;Url&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>The updated URL object.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
             <section data-compodoc="block-properties">
     
@@ -708,7 +1112,7 @@ it returns the existing shortened version.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/urls/urls.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/urls/urls.service.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -721,7 +1125,7 @@ it returns the existing shortened version.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, Logger, NotFoundException } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, Logger } from &#x27;@nestjs/common&#x27;;
 import { CreateUrlDto } from &#x27;./dto/create-url.dto&#x27;;
 import {
   BASE62_CHARACTERS,
@@ -730,6 +1134,7 @@ import {
 import { Repository, IsNull, EntityNotFoundError } from &#x27;typeorm&#x27;;
 import { Url } from &#x27;./entities/url.entity&#x27;;
 import { URLNotFoundException } from &#x27;src/common/errors/custom-errors&#x27;;
+import { UpdateUrlDto } from &#x27;./dto/update-url.dto&#x27;;
 
 @Injectable()
 export class UrlsService {
@@ -754,6 +1159,7 @@ export class UrlsService {
       where: {
         originalUrl,
         userId: IsNull(),
+        deletedAt: IsNull(),
       },
     });
 
@@ -787,7 +1193,7 @@ export class UrlsService {
     try {
       if (!hash || hash.length &#x3D;&#x3D;&#x3D; 0) return null;
 
-      const where &#x3D; { where: { hash } };
+      const where &#x3D; { where: { hash, deletedAt: IsNull() } };
       const url &#x3D; await this._urlRepository.findOneOrFail(where);
 
       this.increaseClickCount(url.id);
@@ -873,6 +1279,105 @@ export class UrlsService {
     if (hashExists) return true;
 
     return false;
+  }
+
+  /**
+   * Retrieves all URLs associated with a specific user that haven&#x27;t been deleted.
+   * @param {number} userId - The user&#x27;s identifier.
+   * @returns {Promise&lt;Url[]&gt;} - A list of URLs with detailed information including ID, hash, original URL, click count, and update timestamp.
+   */
+  async findByUserId(userId: number): Promise&lt;Url[]&gt; {
+    const urls &#x3D; await this._urlRepository.find({
+      where: { userId, deletedAt: null },
+      select: [&#x27;id&#x27;, &#x27;hash&#x27;, &#x27;originalUrl&#x27;, &#x27;clickCount&#x27;, &#x27;updatedAt&#x27;],
+    });
+
+    const handler &#x3D; (item) &#x3D;&gt; {
+      const url &#x3D; &#x60;${process.env.API_DOMAIN}:${process.env.APP_PORT}/${item.hash}&#x60;;
+      item[&#x27;url&#x27;] &#x3D; url;
+      return item;
+    };
+
+    urls.forEach((url) &#x3D;&gt; handler(url));
+
+    return urls;
+  }
+
+  /**
+   * Creates a new URL for a user. If the URL already exists, it returns the existing one.
+   * @param {number} userId - The user&#x27;s identifier.
+   * @param {CreateUrlDto} createUrlDto - Data Transfer Object containing the original URL.
+   * @returns {Promise&lt;{id: number; shortUrl: string}&gt;} - The new URL&#x27;s ID and short URL.
+   */
+  async createByUser(
+    userId: number,
+    { originalUrl }: CreateUrlDto,
+  ): Promise&lt;{ id: number; shortUrl: string }&gt; {
+    const urlExists &#x3D; await this._urlRepository.findOne({
+      where: {
+        originalUrl,
+        userId,
+        deletedAt: IsNull(),
+      },
+    });
+
+    if (urlExists) {
+      const { id, hash } &#x3D; urlExists;
+      return {
+        id,
+        shortUrl: &#x60;${process.env.API_DOMAIN}:${process.env.APP_PORT}/${hash}&#x60;,
+      };
+    }
+
+    const hash &#x3D; await this.getValidHash();
+    const newUrl &#x3D; this._urlRepository.create({
+      originalUrl,
+      hash,
+      userId,
+    });
+
+    const urlSaved &#x3D; await this._urlRepository.save(newUrl);
+    const shortUrl &#x3D; &#x60;${process.env.API_DOMAIN}:${process.env.APP_PORT}/${hash}&#x60;;
+
+    return { shortUrl, id: urlSaved.id };
+  }
+
+  /**
+   * Marks a URL as deleted for a specific user.
+   * @param {number} userId - The user&#x27;s identifier.
+   * @param {number} id - The URL&#x27;s identifier to be removed.
+   */
+  async removeByUserId(userId: number, id: number) {
+    const url &#x3D; await this._urlRepository.findOneOrFail({
+      where: { deletedAt: IsNull(), id, userId },
+    });
+
+    url.deletedAt &#x3D; new Date();
+    await this._urlRepository.save(url);
+  }
+
+  /**
+   * Updates a URL for a specific user.
+   * @param {number} userId - The user&#x27;s identifier.
+   * @param {number} id - The URL&#x27;s identifier to be updated.
+   * @param {UpdateUrlDto} updateUrlDto - Data Transfer Object containing the updated URL data.
+   * @returns {Promise&lt;Url&gt;} - The updated URL object.
+   */
+  async updateByUserId(
+    userId: number,
+    id: number,
+    updateUrlDto: UpdateUrlDto,
+  ): Promise&lt;Url&gt; {
+    await this._urlRepository.findOneOrFail({
+      where: { id, userId, deletedAt: IsNull() },
+    });
+
+    const updateBody &#x3D; await this._urlRepository.preload({
+      id,
+      ...updateUrlDto,
+    });
+
+    return await this._urlRepository.save(updateBody);
   }
 }
 </code></pre>

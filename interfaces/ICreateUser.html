@@ -79,7 +79,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content interface">
                    <div class="content-data">
 
 
@@ -93,9 +93,12 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >URLNotFoundException</li>
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  ICreateUser</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -119,7 +122,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/errors/custom-errors.ts</code>
+            <code>src/users/interfaces/user.interface.ts</code>
         </p>
 
 
@@ -128,34 +131,8 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                        <code>NotFoundException</code>
+                        <code>Pick</code>
             </p>
-
-
-
-
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/common/errors/custom-errors.ts:4</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
-
-
-
-
 
 
 
@@ -164,24 +141,22 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import { ERROR_MESSAGES } from &#x27;./error-messages&#x27;;
-
-export class URLNotFoundException extends NotFoundException {
-  constructor() {
-    super(ERROR_MESSAGES.URL_NOT_FOUND);
-  }
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface IUser {
+  id?: number;
+  email: string;
+  password: string;
+  createdAt: Date;
+  updateAt: Date;
+  deletedAt: Date;
 }
 
-export class EmailIsRegisteredException extends ConflictException {
-  constructor() {
-    super(ERROR_MESSAGES.EMAIL_IS_REGISTERED);
-  }
-}
+export interface ICreateUser
+  extends Pick&lt;IUser, &#x27;id&#x27; | &#x27;email&#x27; | &#x27;createdAt&#x27;&gt; {}
+
+export interface IPayloadUser extends Pick&lt;IUser, &#x27;id&#x27; | &#x27;email&#x27;&gt; {}
 </code></pre>
     </div>
 </div>
-
 
 
 
@@ -215,8 +190,8 @@ export class EmailIsRegisteredException extends ConflictException {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'URLNotFoundException.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'ICreateUser.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

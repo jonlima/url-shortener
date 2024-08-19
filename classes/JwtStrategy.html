@@ -95,7 +95,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >URLNotFoundException</li>
+  <li class="breadcrumb-item" >JwtStrategy</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -119,7 +119,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/errors/custom-errors.ts</code>
+            <code>src/auth/strategies/jwt.strategy.ts</code>
         </p>
 
 
@@ -128,11 +128,39 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                        <code>NotFoundException</code>
+                        <code>PassportStrategy(Strategy)</code>
             </p>
 
 
 
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#validate" >validate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
 
             <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
@@ -145,7 +173,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/common/errors/custom-errors.ts:4</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/auth/strategies/jwt.strategy.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -154,7 +182,81 @@
 </section>
 
 
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validate"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>validate</b></span>
+                        <a href="#validate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validate(payload: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
 
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">src/auth/strategies/jwt.strategy.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>payload</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/IPayloadUser.html" target="_self" >Promise&lt;IPayloadUser&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
 
 
@@ -164,18 +266,22 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import { ERROR_MESSAGES } from &#x27;./error-messages&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
+import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
+import { IPayloadUser } from &#x27;src/users/interfaces/user.interface&#x27;;
 
-export class URLNotFoundException extends NotFoundException {
+export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
-    super(ERROR_MESSAGES.URL_NOT_FOUND);
+    console.log(process.env.JWT_SECRET);
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      secretOrKey: process.env.JWT_SECRET,
+    });
   }
-}
 
-export class EmailIsRegisteredException extends ConflictException {
-  constructor() {
-    super(ERROR_MESSAGES.EMAIL_IS_REGISTERED);
+  async validate(payload: any): Promise&lt;IPayloadUser&gt; {
+    return { id: payload.id, email: payload.email };
   }
 }
 </code></pre>
@@ -216,7 +322,7 @@ export class EmailIsRegisteredException extends ConflictException {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'URLNotFoundException.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'JwtStrategy.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

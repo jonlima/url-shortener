@@ -137,6 +137,11 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#findByUserId" >findByUserId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
@@ -146,11 +151,23 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#shorten" >shorten</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -173,9 +190,86 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="redirect"></a>
+                    <a name="findByUserId"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Async</span>
+                        <span ><b>findByUserId</b></span>
+                        <a href="#findByUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findByUserId(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@UseGuards(JwtAuthGuard)<br />@Get(&#x27;url/user/:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/urls/urls.controller.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="redirect"></a>
+                    <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
@@ -197,14 +291,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;:hash&#x27;)<br />@ApiOperation({summary: &#x27;Redirect to the original URL&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Redirect to the original URL.&#x27;})<br />@ApiResponse({status: 404, description: &#x27;URL not found.&#x27;})<br />@Get(&#x27;:hash&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Redirect to the original URL&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Redirect to the original URL.&#x27;})<br />@ApiResponse({status: 404, description: &#x27;URL not found.&#x27;})<br />@Get(&#x27;:hash&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/urls/urls.controller.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/urls/urls.controller.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -266,8 +360,97 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>remove</b></span>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, req)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@UseGuards(JwtAuthGuard)<br />@Delete(&#x27;url/:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/urls/urls.controller.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="shorten"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
@@ -282,7 +465,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>shorten(createUrlDto: <a href="../classes/CreateUrlDto.html" target="_self">CreateUrlDto</a>)</code>
+                    <code>shorten(createUrlDto: <a href="../classes/CreateUrlDto.html" target="_self">CreateUrlDto</a>, req)</code>
                 </td>
             </tr>
 
@@ -290,14 +473,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a shortened URL&#x27;})<br />@ApiBody({type: CreateUrlDto})<br />@ApiResponse({status: 201, description: &#x27;The URL has been successfully shortened.&#x27;, type: String})<br />@ApiResponse({status: 400, description: &#x27;Invalid URL provided.&#x27;})<br />@Post()<br /></code>
+                    <code>@UseGuards(OptionalAuthGuard)<br />@Post()<br />@ApiOperation({summary: &#x27;Create a shortened URL&#x27;})<br />@ApiBody({type: CreateUrlDto})<br />@ApiResponse({status: 201, description: &#x27;The URL has been successfully shortened.&#x27;, type: String})<br />@ApiResponse({status: 400, description: &#x27;Invalid URL provided.&#x27;})<br />@Post()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/urls/urls.controller.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/urls/urls.controller.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -321,6 +504,118 @@
                                                 <td>createUrlDto</td>
                                             <td>
                                                             <code><a href="../classes/CreateUrlDto.html" target="_self" >CreateUrlDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateUrlDto: <a href="../classes/UpdateUrlDto.html" target="_self">UpdateUrlDto</a>, req)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@UseGuards(JwtAuthGuard)<br />@Put(&#x27;url/:id&#x27;)<br />@ApiOperation({summary: &#x27;Update url by id&#x27;})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/urls/urls.controller.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>updateUrlDto</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateUrlDto.html" target="_self" >UpdateUrlDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
                                             </td>
 
                                             <td>
@@ -355,20 +650,29 @@
   Param,
   Logger,
   Res,
+  UseGuards,
+  Req,
+  Delete,
+  Put,
 } from &#x27;@nestjs/common&#x27;;
 import { ApiTags, ApiOperation, ApiBody, ApiResponse } from &#x27;@nestjs/swagger&#x27;;
 import { UrlsService } from &#x27;./urls.service&#x27;;
 import { CreateUrlDto } from &#x27;./dto/create-url.dto&#x27;;
 import { URLNotFoundException } from &#x27;src/common/errors/custom-errors&#x27;;
-import { Response } from &#x27;express&#x27;;
+import { Response, Request } from &#x27;express&#x27;;
+import { JwtAuthGuard } from &#x27;src/auth/guards/jwt-auth.guard&#x27;;
+import { OptionalAuthGuard } from &#x27;src/auth/guards/optional-auth.guard&#x27;;
+import { IPayloadUser } from &#x27;src/users/interfaces/user.interface&#x27;;
+import { UpdateUrlDto } from &#x27;./dto/update-url.dto&#x27;;
 
 @ApiTags(&#x27;URLs&#x27;)
 @Controller(&#x27;&#x27;)
 export class UrlsController {
   private logger &#x3D; new Logger(UrlsController.name);
 
-  constructor(private readonly urlsService: UrlsService) {}
+  constructor(private readonly _urlsService: UrlsService) {}
 
+  @UseGuards(OptionalAuthGuard)
   @Post()
   @ApiOperation({ summary: &#x27;Create a shortened URL&#x27; })
   @ApiBody({ type: CreateUrlDto })
@@ -379,18 +683,25 @@ export class UrlsController {
   })
   @ApiResponse({ status: 400, description: &#x27;Invalid URL provided.&#x27; })
   @Post()
-  shorten(@Body() createUrlDto: CreateUrlDto) {
-    return this.urlsService.create(createUrlDto);
+  shorten(
+    @Body() createUrlDto: CreateUrlDto,
+    @Req() req: Request &amp; { user?: IPayloadUser },
+  ) {
+    if (req.user) {
+      const userId &#x3D; req.user?.id;
+      return this._urlsService.createByUser(userId, createUrlDto);
+    } else {
+      return this._urlsService.create(createUrlDto);
+    }
   }
 
-  @Get(&#x27;:hash&#x27;)
   @ApiOperation({ summary: &#x27;Redirect to the original URL&#x27; })
   @ApiResponse({ status: 200, description: &#x27;Redirect to the original URL.&#x27; })
   @ApiResponse({ status: 404, description: &#x27;URL not found.&#x27; })
   @Get(&#x27;:hash&#x27;)
   async redirect(@Param(&#x27;hash&#x27;) hash: string, @Res() res: Response) {
     try {
-      const result &#x3D; await this.urlsService.getOriginalUrlByHash(hash);
+      const result &#x3D; await this._urlsService.getOriginalUrlByHash(hash);
       return res.redirect(result.url);
     } catch (error) {
       this.logger.error(error);
@@ -401,6 +712,29 @@ export class UrlsController {
 
       throw error;
     }
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(&#x27;url/user/:id&#x27;)
+  async findByUserId(@Param(&#x27;id&#x27;) userId: number) {
+    return await this._urlsService.findByUserId(userId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(&#x27;url/:id&#x27;)
+  remove(@Param(&#x27;id&#x27;) id: number, @Req() req) {
+    return this._urlsService.removeByUserId(req.user.id, id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put(&#x27;url/:id&#x27;)
+  @ApiOperation({ summary: &#x27;Update url by id&#x27; })
+  update(
+    @Param(&#x27;id&#x27;) id: number,
+    @Body() updateUrlDto: UpdateUrlDto,
+    @Req() req,
+  ) {
+    return this._urlsService.updateByUserId(req.user.id, id, updateUrlDto);
   }
 }
 </code></pre>

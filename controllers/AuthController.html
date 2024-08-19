@@ -79,23 +79,16 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
-
-
-
-
-
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >URLNotFoundException</li>
+  <li class="breadcrumb-item">Controllers</li>
+  <li class="breadcrumb-item" >AuthController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -119,68 +112,163 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/errors/custom-errors.ts</code>
+            <code>src/auth/auth.controller.ts</code>
         </p>
 
-
-
             <p class="comment">
-                <h3>Extends</h3>
+                <h3>Prefix</h3>
             </p>
             <p class="comment">
-                        <code>NotFoundException</code>
+                <code>auth</code>
             </p>
 
 
 
 
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+                        <h6><b>Methods</b></h6>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/common/errors/custom-errors.ts:4</a></div>
-                            </td>
-                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#login" >login</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
-            </tbody>
-        </table>
+
+
+
+
+        </tbody>
+    </table>
 </section>
 
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="login"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Async</span>
+                        <span ><b>login</b></span>
+                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>login(req)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@UseGuards(LocalAuthGuard)<br />@Post(&#x27;/login&#x27;)<br />@ApiOperation({summary: &#x27;Login (email, password)&#x27;})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="13"
+                                    class="link-to-prism">src/auth/auth.controller.ts:13</a></div>
+                        </td>
+                    </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>req</td>
+
+                                            <td>
+                                                    No
+                                            </td>
 
 
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
 
-
-
-    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import { ERROR_MESSAGES } from &#x27;./error-messages&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Post, Request, UseGuards } from &#x27;@nestjs/common&#x27;;
+import { AuthService } from &#x27;./auth.service&#x27;;
+import { LocalAuthGuard } from &#x27;./guards/local-auth.guard&#x27;;
+import { ApiOperation } from &#x27;@nestjs/swagger&#x27;;
 
-export class URLNotFoundException extends NotFoundException {
-  constructor() {
-    super(ERROR_MESSAGES.URL_NOT_FOUND);
-  }
-}
+@Controller(&#x27;auth&#x27;)
+export class AuthController {
+  constructor(private readonly authService: AuthService) {}
 
-export class EmailIsRegisteredException extends ConflictException {
-  constructor() {
-    super(ERROR_MESSAGES.EMAIL_IS_REGISTERED);
+  @UseGuards(LocalAuthGuard)
+  @Post(&#x27;/login&#x27;)
+  @ApiOperation({ summary: &#x27;Login (email, password)&#x27; })
+  async login(@Request() req) {
+    return this.authService.login(req.user);
   }
 }
 </code></pre>
     </div>
 </div>
+
+
+
+
+
+
+
 
 
 
@@ -215,8 +303,8 @@ export class EmailIsRegisteredException extends ConflictException {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'URLNotFoundException.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
