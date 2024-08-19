@@ -25,6 +25,20 @@ URL Shortener is a backend application that provides a URL shortening service.
 - **[NodeJS](https://nodejs.org/en)**: 20.x
 - **[Docker](https://www.docker.com/)** 
 
+### Environment variables
+```bash
+APP_PORT=3001
+API_DOMAIN=http://localhost
+DATABASE_HOST=
+DATABASE_PORT=5432
+DATABASE_NAME=
+DATABASE_USER=
+DATABASE_PASSWORD=
+DATABASE_SCHEMA=public
+```
+
+> When using docker-compose, put `db-pg` in DATABASE_HOST
+
 #### Run in Docker
 
 1. Clone:
