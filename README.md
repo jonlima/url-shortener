@@ -67,6 +67,25 @@ DATABASE_SCHEMA=public
 
 | **Route**           | **Method** | **Request Body**                                                     | **Response Body**                             | **Headers**                                  |
 |---------------------|------------|----------------------------------------------------------------------|-----------------------------------------------|----------------------------------------------|
+| `/`                 | `POST`     | `{ "originalUrl": "string" }`                                        | `{ "id": "number", "shortUrl": "string" }`    | `Authorization: Bearer <token> (optional)`   |
+| `/:hash`            | `GET`      | None                                                                 | Redirect to original URL                      | None                                         |
+| `/url/user/:id`     | `GET`      | None                                          | `[{"id", "hash", "originalUrl","clickCount", "updatedAt", "url" }]`  | `Authorization: Bearer <token>`              |
+| `/url/:id`          | `DELETE`   | None                                                                 | None                                          | `Authorization: Bearer <token>`              |
+| `/:hash`            | `PUT`      | `{"originalUrl": "string"}`                   | `{"id", "hash", "originalUrl","clickCount", "updatedAt", "url" }`    | `Authorization: Bearer <token>`              |
+
+
+##### **Auth Module**
+
+| **Route**           | **Method** | **Request Body**                                                     | **Response Body**                             | **Headers**                                  |
+|---------------------|------------|----------------------------------------------------------------------|-----------------------------------------------|----------------------------------------------|
+| `/login`            | `POST`     | `{ "email": "string", "password": "string" }`                        | `{ "access_token": "string" }`                | None                                         |
+
+
+
+##### **Users Module**
+
+| **Route**           | **Method** | **Request Body**                                                     | **Response Body**                             | **Headers**                                  |
+|---------------------|------------|----------------------------------------------------------------------|-----------------------------------------------|----------------------------------------------|
 | `/`                 | `POST`     | `{ "originalUrl": "string" }`                                        | `{ "id": "number", "shortUrl": "string" }`    | None                                         |
 | `/:hash`            | `GET`      | None                                                                 | Redirect to original URL                      | None                                         |
 
@@ -98,6 +117,19 @@ npm run compodoc
 ### Future Scope
 
 <img src="./artifacts/Scope.png" />
+
+### Improvements
+
+- Break into services
+- Add cache
+- Deploy on a cloud
+- Logging and Monitoring
+- Add resources: Plan, URL Metadata, Click Tracking
+- Add circuit breake
+- Add pagination
+- Customizable URL
+- Experiment with URLs
+- Add load balancer
 
 ### Autor
 
