@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { Url } from './url.entity';
-import { DATA_SOURCE, URLS_REPOSITORY } from '../../common/constants';
+import { DATA_SOURCE, URLS_REPOSITORY } from '../../common/constants/constants';
 
 export const urlProviders = [
   {

@@ -1,4 +1,4 @@
-import { DATA_SOURCE } from '../common/constants';
+import { DATA_SOURCE } from '../common/constants/constants';
 import { ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
 import { Url } from 'src/urls/entities/url.entity';

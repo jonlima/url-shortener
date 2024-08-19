@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UrlsService } from './urls.service';
 import { Repository } from 'typeorm';
 import { Url } from './entities/url.entity';
-import { URLS_REPOSITORY } from '../common/constants';
+import { URLS_REPOSITORY } from '../common/constants/constants';
 
 describe('UrlsService', () => {
   let service: UrlsService;
