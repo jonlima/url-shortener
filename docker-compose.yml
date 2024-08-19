@@ -1,6 +1,8 @@
 version: '3.8'
 services:
   api:
+    depends_on:
+      - db-pg
     build:
       context: .
       dockerfile: Dockerfile
@@ -14,6 +16,11 @@ services:
       - url-shortener
     env_file:
       - ./.env
+    command: >
+      sh -c "
+        npm run migration:run &&
+        npm run start:dev
+      "
 
   db-pg:
     image: postgres:latest
