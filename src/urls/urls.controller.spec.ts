@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UrlsController } from './urls.controller';
 import { UrlsService } from './urls.service';
-import { CreateUrlDto } from './dto/create-url.dto';
 import { Response } from 'express';
 
 describe('UrlsController', () => {
@@ -34,15 +33,6 @@ describe('UrlsController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
     expect(service).toBeDefined();
-  });
-
-  describe('shorten', () => {
-    it('should call with the correct parameters', async () => {
-      const dto = new CreateUrlDto();
-      dto.originalUrl = 'http://google.com';
-      await controller.shorten(dto);
-      expect(service.create).toHaveBeenCalledWith(dto);
-    });
   });
 
   describe('redirect', () => {

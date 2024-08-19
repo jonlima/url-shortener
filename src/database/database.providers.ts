@@ -2,6 +2,7 @@ import { DATA_SOURCE } from '../common/constants/constants';
 import { ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
 import { Url } from 'src/urls/entities/url.entity';
+import { User } from 'src/users/entities/user.entity';
 
 export const databaseProviders = [
   {
@@ -17,7 +18,7 @@ export const databaseProviders = [
         password: configService.get<string>('DATABASE_PASSWORD'),
         synchronize: false,
         logging: true,
-        entities: [Url],
+        entities: [Url, User],
       });
 
       return dataSource.initialize();

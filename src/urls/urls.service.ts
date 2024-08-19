@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { CreateUrlDto } from './dto/create-url.dto';
 import {
   BASE62_CHARACTERS,
@@ -7,6 +7,7 @@ import {
 import { Repository, IsNull, EntityNotFoundError } from 'typeorm';
 import { Url } from './entities/url.entity';
 import { URLNotFoundException } from 'src/common/errors/custom-errors';
+import { UpdateUrlDto } from './dto/update-url.dto';
 
 @Injectable()
 export class UrlsService {
@@ -31,6 +32,7 @@ export class UrlsService {
       where: {
         originalUrl,
         userId: IsNull(),
+        deletedAt: IsNull(),
       },
     });
 
@@ -64,7 +66,7 @@ export class UrlsService {
     try {
       if (!hash || hash.length === 0) return null;
 
-      const where = { where: { hash } };
+      const where = { where: { hash, deletedAt: IsNull() } };
       const url = await this._urlRepository.findOneOrFail(where);
 
       this.increaseClickCount(url.id);
@@ -150,5 +152,104 @@ export class UrlsService {
     if (hashExists) return true;
 
     return false;
+  }
+
+  /**
+   * Retrieves all URLs associated with a specific user that haven't been deleted.
+   * @param {number} userId - The user's identifier.
+   * @returns {Promise<Url[]>} - A list of URLs with detailed information including ID, hash, original URL, click count, and update timestamp.
+   */
+  async findByUserId(userId: number): Promise<Url[]> {
+    const urls = await this._urlRepository.find({
+      where: { userId, deletedAt: null },
+      select: ['id', 'hash', 'originalUrl', 'clickCount', 'updatedAt'],
+    });
+
+    const handler = (item) => {
+      const url = `${process.env.API_DOMAIN}:${process.env.APP_PORT}/${item.hash}`;
+      item['url'] = url;
+      return item;
+    };
+
+    urls.forEach((url) => handler(url));
+
+    return urls;
+  }
+
+  /**
+   * Creates a new URL for a user. If the URL already exists, it returns the existing one.
+   * @param {number} userId - The user's identifier.
+   * @param {CreateUrlDto} createUrlDto - Data Transfer Object containing the original URL.
+   * @returns {Promise<{id: number; shortUrl: string}>} - The new URL's ID and short URL.
+   */
+  async createByUser(
+    userId: number,
+    { originalUrl }: CreateUrlDto,
+  ): Promise<{ id: number; shortUrl: string }> {
+    const urlExists = await this._urlRepository.findOne({
+      where: {
+        originalUrl,
+        userId,
+        deletedAt: IsNull(),
+      },
+    });
+
+    if (urlExists) {
+      const { id, hash } = urlExists;
+      return {
+        id,
+        shortUrl: `${process.env.API_DOMAIN}:${process.env.APP_PORT}/${hash}`,
+      };
+    }
+
+    const hash = await this.getValidHash();
+    const newUrl = this._urlRepository.create({
+      originalUrl,
+      hash,
+      userId,
+    });
+
+    const urlSaved = await this._urlRepository.save(newUrl);
+    const shortUrl = `${process.env.API_DOMAIN}:${process.env.APP_PORT}/${hash}`;
+
+    return { shortUrl, id: urlSaved.id };
+  }
+
+  /**
+   * Marks a URL as deleted for a specific user.
+   * @param {number} userId - The user's identifier.
+   * @param {number} id - The URL's identifier to be removed.
+   */
+  async removeByUserId(userId: number, id: number) {
+    const url = await this._urlRepository.findOneOrFail({
+      where: { deletedAt: IsNull(), id, userId },
+    });
+
+    url.deletedAt = new Date();
+    await this._urlRepository.save(url);
+  }
+
+  /**
+   * Updates a URL for a specific user.
+   * @param {number} userId - The user's identifier.
+   * @param {number} id - The URL's identifier to be updated.
+   * @param {UpdateUrlDto} updateUrlDto - Data Transfer Object containing the updated URL data.
+   * @returns {Promise<Url>} - The updated URL object.
+   */
+  async updateByUserId(
+    userId: number,
+    id: number,
+    updateUrlDto: UpdateUrlDto,
+  ): Promise<Url> {
+    await this._urlRepository.findOneOrFail({
+      where: { id, userId, deletedAt: IsNull() },
+    });
+
+    const updateBody = await this._urlRepository.preload({
+      id,
+      ...updateUrlDto,
+    });
+
+    return await this._urlRepository.save(updateBody);
   }
 }
